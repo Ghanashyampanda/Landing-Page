@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LOGIN </title>
+
+    <script type="text/javascript">
+        function validateform()
+        {
+            var name = document.myform.name.value;
+            var password = document.myform.password.value;
+
+            if(name == null  || name =="")
+            {
+                alert("enter your name")
+                return false;
+            }
+            else if (password.length<6)
+            {
+                alert("password must be 6 characters")
+                return false;
+            }
+
+        }
+    </script>
+</head>
+
+<style>
+    .main{
+        background-color: rgb(255, 213, 213);
+        width: 300px;
+        height: 200px;
+       top: 100px;
+       left: 200px;
+       position: absolute;
+    }
+   
+</style>
+
+<body>
+    <div class="main"><center>
+        <form method="get" action="back.html" name="myform" onsubmit="validateform()" >
+        USERNAME:<input type="text" name="name"><br>
+        PASSWORD:<input type="password" name="password"><br>
+        <input type="submit" value="register">
+    </form></center>
+        
+    </div>
+</body>
+</html>

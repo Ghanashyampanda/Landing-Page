@@ -1,0 +1,1362 @@
+<html> 
+<head>
+	<style type="text/css">
+		body{
+			background-color: yellowgreen;
+			margin: 0;
+			color: red;
+			}
+		#a2{
+			height: 190px;
+			width: 15%;
+			background-color: aqua;
+			float:right;
+			transform:translateY(-3px);
+
+		}
+	</style>
+</head>
+<body>
+<fieldset>
+		<div id="a2">
+				<img src="sachin.jpg" height="190px" width="100%">
+		</div>
+
+
+<details>
+		UNIT-II
+Syllabus:-
+Flip-flop, Gated Latch, Master-Slave Flip-Flop, Edge-Trigging, T Flip-Flop, 
+JK flip-flop, Register and sift Resister, Counter, Decoders, Multiplexers, 
+Programmable Logic Devices (PLDs), Programmable Array Logic(PAL), 
+Complex Programmable Logic Devices (CPLDs), Field-Programmable Gate 
+Array (FPGA), Sequential Circuits, Timing Diagram, The Finite State 
+Machine Model, Synthesis of Finite State Machine.
+Flip-Flop:-
+1) A flip-flop is a bi-stable device. It has 2 stable states. Its O/P remains 
+either high or low. 
+2) The high stable state is called SET. The other stable state is called 
+RESET. 
+3) It can store binary bit, rather 0 or 1. Thus, it has storing capability, 
+i.e., memory.
+4) The most commonly used application of flip flops is in the 
+implementation of a feedback circuit 
+The main difference between latches and flip-flops is that 
+ For latches when they are enabled, their output changes immediately 
+when their inputs change.
+ Latch is level sensitive and there is no use of clock. 
+ Flip-flops have their output change only either at the rising or filling 
+edge of the enable signal.  Flip-flop is edge sensitive and we need clock to design a flip-flop 
+There are basically five main types of latches and flip-flops: 
+1. SR Flip-flop. 
+2. D Flip flop. 
+3. JK Flip-flop 
+4. T Flip flop. 
+5. Master-Slave Flip-flop.
+The major differences in these flip-flop types are the number of inputs they 
+have and how they change state.
+1)SR Latch:-  RS latch have two inputs, S and R. S is called set and R is called reset. 
+ The S input is used to produce HIGH on Q (i.e. store binary 1 in flip-flop). 
+ The R input is used to produce LOW on Q (i.e. store binary 0 in flip-flop). 
+ Q’ is Q complementary output, so it always holds the opposite value of Q. 
+ The output of the S-R latch depends on current as well as previous inputs 
+or state, and its state (value stored) can change as soon as its inputs 
+change. 
+Working:-
+S=1, R=0—Q=0, Q’=1
+This state is also called the SET state.
+S=0, R=1—Q=1, Q’=0
+This state is known as the RESET state.
+In both the states the outputs are just compliments of each other and 
+that the value of Q follows the compliment value of S.
+S=0, R=0—Q=1, & Q’ =1 [Invalid]
+If both the values of S and R are switched to 0 it is an invalid state 
+because the values of both Q and Q’ are 1. They are supposed to be 
+compliments of each other. Normally, this state must be avoided.
+S=1, R=1—Q & Q’= Remember
+If both the values of S and R are switched to 1, then the circuit 
+remembers the value of S and R in their previous state.
+SR Flip-Flop:-  It is basically S-R latch using NAND gates with an additional enable 
+input. It is also called as level triggered SR-FF. 
+ For this, circuit in output will take place if and only if the enable input 
+(E) is made active.
+ It is also called a Gated S-R flip flop.
+ 
+(Block Diagram) (Circuit Diagram)
+Truth Table
+Working:-
+I. A clock pulse [CP] is given to the inputs of the AND Gate. 
+II. When the value of the clock pulse is ‘0’, the outputs of both the AND Gates 
+remain ‘0’. 
+III. When CP is ‘1’, this makes the values at S and R to pass through the 
+NOR Gate flip flop. 
+IV. But when the values of both S and R values turn ‘1’, the HIGH value of CP 
+causes both of them to turn to ‘0’.
+S = R = 0: No change
+If S =R = 0 then output of NAND gates 3 and 4 are forced to become 1.
+Hence R' and S' both will be equal to 1. Since S' and R' are the input of 
+the basic S-R latch using NAND gates, there will be no change in the state 
+of outputs.
+S = 0, R = 1, E = 1
+Since S = 0, output of NAND-3 i.e. R' = 1 and E = 1 the output of NAND-
+4 i.e. S' = 0.
+Hence Qn+1 = 0 and Qn+1 bar = 1. This is reset condition.
+S = 1, R = 0, E = 1
+Output of NAND-3 i.e. R' = 0 and output of NAND-4 i.e. S' = 1.
+Hence output of S-R NAND latch is Qn+1 = 1 and Qn+1 bar = 0. This is 
+the reset condition.
+S = 1, R = 1, E = 1
+As S = 1, R = 1 and E = 1, the output of NAND gates 3 and 4 both are 0 
+i.e. S' = R' = 0.
+Hence the Race condition will occur in the basic NAND latch.
+Excitation Table of the SR Latch
+ During the design process we usually know the transition from present state 
+to next state and wish to find the latch input conditions that will cause the 
+required transition.
+ For this reason, we need a table that lists the required inputs for a given 
+change of state
+Characteristic Table
+Delay/Data Flip Flop / D Flip Flop
+1. Delay Flip Flop or D Flip Flop is the simple gated S-R latch with a NAND
+inverter connected between S and R inputs.
+2. It has only one input. The input data is appearing at the output after some
+time. Due to this data delay between i/p and o/p, it is called delay flip flop.
+3. S and R will be the complements of each other due to NAND inverter.
+Hence S = R = 0 or S = R = 1, these input condition will never appear.
+This problem is avoid by SR = 00 and SR = 1 conditions.
+(Block Diagram) (Circuit Diagram)
+Truth Table
+Working:-
+1.E = 0
+Latch is disabled. Hence no change in output.
+2.E = 1 and D = 0
+If E = 1 and D = 0 then S = 0 and R = 1. Hence irrespective of the
+present state, the next state is Qn+1 = 0 and Qn+1 bar = 1. This is the
+reset condition.
+3.E = 1 and D = 1
+If E = 1 and D = 1, then S = 1 and R = 0. This will set the latch and
+Qn+1 = 1 and Qn+1 bar = 0 irrespective of the present state.
+JK Flip-Flop:-
+Characteristic Table
+Excitation Table and K Map
+ A J-K flip flop can also be defined as a modification of the S-R flip flop.
+ The behaviour of inputs J and K is same as the S and R inputs of the S￾R flip flop. The letter J stands for SET and the letter K stands for CLEAR.
+ If the J and K input are both at 1 and the clock pulse is applied, then the 
+output will change state, regardless of its previous condition.
+ If both J and K inputs are at 0 and the clock pulse there will be no change 
+in the output. 
+ There is no indeterminate condition, in the operation of JK.
+Working:-  The circuit includes two 3-input AND gates. The output Q of the flip flop is 
+returned back as a feedback to the input of the AND along with other 
+inputs like K and clock pulse [CP]. 
+ So, if the value of CP is ‘1’, the flip flop gets a CLEAR signal and with 
+the condition that the value of Q was earlier 1. 
+ Similarly output Q’ of the flip flop is given as a feedback to the input of the 
+AND along with other inputs like J and clock pulse [CP]. 
+ So the output becomes SET when the value of CP is 1 only if the value of 
+Q’ was earlier 1
+ The output may be repeated in transitions once they have been 
+complimented for J=K=1 because of the feedback connection in the JK flip￾flop
+Truth Table: Excitation Table
+T – Flip Flop:-
+Characteristic Table And K Map:
+ The T flip-flop is a single input version of the JK flip-flop where T is 
+connected to both J and K inputs directly.
+ When T = 0, the flip flop enters into Hold mode, which means that the 
+output, Q is kept the same as it was before the clock edge.  When T = 1, the flip flop enters into Toggle mode, which means the output 
+Q is negated after the clock edge, compared to the value before the clock 
+edge.
+ 
+Truth Table
+ 
+Characteristic Table Excitation Table
+Characteristic equation of T-Flip Flop:
+Qn + 1 = T ⊕ Qn
+Race Around Condition:
+The race around condition will occur in JK flip flop when 
+J = K = 1 and tpd (FF) < tpw.
+To avoid race around condition.
+tpw < tpd (FF) < TCLK
+Master Slave JK Flip Flop:-
+Master slave JK FF is a cascade of two S-R FF with feedback from the output of 
+second to input of first. Master is a positive level triggered. But due to the 
+presence of the inverter in the clock line, the slave will respond to the negative 
+level. Hence when the clock = 1 (positive level) the master is active and the 
+slave is inactive. Whereas when clock = 0 (low level) the slave is active and 
+master is inactive.
+Circuit Diagram:
+Truth Table
+Working:-
+1.J = K = 0 (No change)
+When clock = 0, the slave becomes active and master is inactive. But since 
+the S and R inputs have not changed, the slave outputs will also remain 
+unchanged. Therefore outputs will not change if J = K =0.
+2.J = 0 and K = 1 (Reset)
+1. Clock = 1 − Master active, slave inactive. Therefore outputs of the master 
+become Q1 = 0 and Q1 bar = 1. That means S = 0 and R =1.
+2. Clock = 0 − Slave active, master inactive. Therefore outputs of the slave 
+become Q = 0 and Q bar = 1.
+3. Again clock = 1 − Master active, slave inactive. Therefore even with the 
+changed outputs Q = 0 and Q bar = 1 fed back to master, its output will 
+be Q1 = 0 and Q1 bar = 1. That means S = 0 and R = 1.
+4. Hence with clock = 0 and slave becoming active the outputs of slave will 
+remain Q = 0 and Q bar = 1. Thus we get a stable output from the Master 
+slave.
+3.J = 1 and K = 0 (Set)
+1. Clock = 1 − Master active, slave inactive. Therefore outputs of the master 
+become Q1 = 1 and Q1 bar = 0. That means S = 1 and R =0.
+2. Clock = 0 − Slave active, master inactive. Therefore outputs of the slave 
+become Q = 1 and Q bar = 0.
+3. Again clock = 1 − then it can be shown that the outputs of the slave are 
+stabilized to Q = 1 and Q bar = 0.
+4.J = K = 1 (Toggle)
+1. Clock = 1 − Master active, slave inactive. Outputs of master will toggle. So 
+S and R also will be inverted.
+2. Clock = 0 − Slave active, master inactive. Outputs of slave will toggle.
+3. These changed output are returned back to the master inputs. But since 
+clock = 0, the master is still inactive. So it does not respond to these 
+changed outputs. This avoids the multiple toggling which leads to the race 
+around condition. The master slave flip flop will avoid the race around 
+condition.
+Triggering of Flip Flops:
+ The output of a flip flop can be changed by bring a small change in the input 
+signal.This small change can be brought with the help of a clock pulse or 
+commonly known as a trigger pulse.
+ When such a trigger pulse is applied to the input, the output changes and thus 
+the flip flop is said to be triggered.
+ Flip flops are applicable in designing counters or registers which stores data in 
+the form of multi-bit numbers. 
+ But such registers need a group of flip flops connected to each other as 
+sequential circuits. And these sequential circuits require trigger pulses.
+There are mainly four types of pulse-triggering methods. They differ in the 
+manner in which the electronic circuits respond to the pulse. They are 
+1. High Level Triggering
+When a flip flop is required to respond at its HIGH state, a HIGH level 
+triggering method is used. It is mainly identified from the straight lead from the 
+clock input. 
+2. Low Level Triggering:
+When a flip flop is required to respond at its LOW state, a LOW level 
+triggering method is used. It is mainly identified from the clock input lead along 
+with a low state indicator bubble. 
+3. Positive Edge Triggering
+When a flip flop is required to respond at a LOW to HIGH transition state, 
+POSITIVE edge triggering method is used. It is mainly identified from the clock 
+input lead along with a triangle. 
+4. Negative Edge triggering
+When a flip flop is required to respond during the HIGH to LOW transition 
+state, a NEGATIVE edge triggering method is used. It is mainly identified from the 
+clock input lead along with a low-state indicator and a triangle. 
+Clock Pulse Transition
+The movement of a trigger pulse is always from a 0 to 1 and then 1 to 0 
+of a signal. Thus it takes two transitions in a single signal. When it moves from 0 
+to 1 it is called a positive transition and when it moves from 1 to 0 it is called a 
+negative transition. 
+The clocked flip-flops already introduced are triggered during the 0 to 1 transition 
+of the pulse, and the state transition starts as soon as the pulse reaches the 
+HIGH level. If the other inputs change while the clock is still 1, a new output 
+state may occur. If the flip-flop is made to then the multiple-transition problem can 
+be eliminated.
+The multi-transition problem can be stopped is the flip flop is made to respond to 
+the positive or negative edge transition only, other than responding to the entire 
+pulse duration.
+Flip Flop Conversions:
+Procedure for Flip Flop conversion:
+1. Conversion Table: Construct the characteristic table of required flip flop 
+(unknown), and fill available (known) flip flop excitation.
+2. Solve K map for given (known) flip flop as input and required flip flop as 
+output.
+3. Implement the required flip flop using the known flip flop.
+The flip flop conversions are classified into different types which are:
+1. SR Flip Flop to JK Flip Flop
+2. JK-FF to SR-FF Conversion
+3. SR-FF to D-FF Conversion
+4. D-FF to SR-FF Conversion
+5. JK-FF to T-FF Conversion
+6. JK-FF to D-FF Conversion
+7. D-FF to JK-FF Conversion
+Register and sift Resister:
+Flip-flop is a 1 bit memory cell which can be used for storing the 
+digital data. To increase the storage capacity in terms of number of bits, we 
+have to use a group of flip-flop. Such a group of flip-flop is known as 
+a Register. The n-bit register will consist of n number of flip-flop and it is 
+capable of storing an n-bit word.
+The binary data in a register can be moved within the register from one 
+flip-flop to another. The registers that allow such data transfers are called 
+as shift registers. There are four mode of operations of a register.
+1. Serial Input Serial Output (shift register)
+2. Serial Input Parallel Output
+3. Parallel Input Serial Output
+4. Parallel Input Parallel Output (storage/buffer register)
+Serial Input Serial Output:
+Let all the flip-flop be initially in the reset condition i.e. Q3 = Q2 = Q1 = 
+Q0 = 0. If an entry of a four bit binary number 1 1 1 1 is made into the 
+register, this number should be applied to Din bit with the LSB bit applied 
+first. The D input of FF-3 i.e. D3 is connected to serial data input Din. 
+Output of FF-3 i.e. Q3 is connected to the input of the next flip-flop i.e. 
+D2 and so on.
+Block Diagram
+Operation
+Before application of clock signal, let Q3 Q2 Q1 Q0 = 0000 and apply LSB 
+bit of the number to be entered to Din. So Din = D3 = 1. Apply the clock. 
+On the first falling edge of clock, the FF-3 is set, and stored word in the 
+register is Q3 Q2 Q1Q0 = 1000.
+Apply the next bit to Din. So Din = 1. As soon as the next negative edge of 
+the clock hits, FF-2 will set and the stored word change to Q3 Q2 Q1 Q0 = 
+1100. Apply the next bit to be stored i.e. 1 to Din. Apply the clock pulse. As soon 
+as the third negative clock edge hits, FF-1 will be set and output will be 
+modified to Q3 Q2 Q1 Q0 = 1110.
+Similarly with Din = 1 and with the fourth negative clock edge arriving, the 
+stored word in the register is Q3 Q2 Q1 Q0 = 1111.
+Truth Table
+Waveforms
+Serial Input Parallel Output
+ In such types of operations, the data is entered serially and taken out in 
+parallel fashion.
+ Data is loaded bit by bit. The outputs are disabled as long as the data is 
+loading.
+ As soon as the data loading gets completed, all the flip-flops contain their 
+required data, the outputs are enabled so that all the loaded data is made 
+available over all the output lines at the same time.
+ 4 clock cycles are required to load a four bit word. Hence the speed of 
+operation of SIPO mode is same as that of SISO mode.
+Block Diagram
+Parallel Input Serial Output (PISO)
+ Data bits are entered in parallel fashion.
+ Output of previous Flip Flop is connected to the input of the next one via a 
+combinational circuit.
+ The binary input word B0, B1, B2, B3 is applied though the same 
+combinational circuit.
+ There are two modes in which this circuit can work namely - shift mode or 
+load mode.
+Load mode
+When the shift/load bar line is low (0), the AND gate 2, 4 and 6 become active 
+they will pass B1, B2, B3 bits to the corresponding flip-flops. On the low going 
+edge of clock, the binary input B0, B1, B2, B3 will get loaded into the 
+corresponding flip-flops. Thus parallel loading takes place.
+Shift mode
+When the shift/load bar line is low (1), the AND gate 2, 4 and 6 become inactive. 
+Hence the parallel loading of the data becomes impossible. But the AND gate 1,3 
+and 5 become active. Therefore the shifting of data from left to right bit by bit on 
+application of clock pulses. Thus the parallel in serial out operation takes place.
+Block Diagram
+Parallel Input Parallel Output (PIPO)
+In this mode, the 4 bit binary input B0, B1, B2, B3 is applied to the data inputs 
+D0, D1, D2, D3 respectively of the four flip-flops. As soon as a negative clock 
+edge is applied, the input binary bits will be loaded into the flip-flops 
+simultaneously. The loaded bits will appear simultaneously to the output side. Only 
+clock pulse is essential to load all the bits.
+Block Diagram
+Bidirectional Shift Register
+ If a binary number is shifted left by one position then it is equivalent to 
+multiplying the original number by 2. Similarly if a binary number is shifted 
+right by one position then it is equivalent to dividing the original number by 
+2.
+ Hence if we want to use the shift register to multiply and divide the given 
+binary number, then we should be able to move the data in either left or 
+right direction.
+ Such a register is called bi-directional register. A four bit bi-directional shift 
+register is shown in fig.
+ There are two serial inputs namely the serial right shift data input DR, and 
+the serial left shift data input DL along with a mode select input (M).
+Syllabus:-
+Flip-flop, Gated Latch, Master-Slave Flip-Flop, Edge-Trigging, T Flip-Flop, 
+JK flip-flop, Register and sift Resister, Counter, Decoders, Multiplexers, 
+Programmable Logic Devices (PLDs), Programmable Array Logic(PAL), 
+Complex Programmable Logic Devices (CPLDs), Field-Programmable Gate 
+Array (FPGA), Sequential Circuits, Timing Diagram, The Finite State 
+Machine Model, Synthesis of Finite State Machine.
+Flip-Flop:-
+1) A flip-flop is a bi-stable device. It has 2 stable states. Its O/P remains 
+either high or low. 
+2) The high stable state is called SET. The other stable state is called 
+RESET. 
+3) It can store binary bit, rather 0 or 1. Thus, it has storing capability, 
+i.e., memory.
+4) The most commonly used application of flip flops is in the 
+implementation of a feedback circuit 
+The main difference between latches and flip-flops is that 
+ For latches when they are enabled, their output changes immediately 
+when their inputs change.
+ Latch is level sensitive and there is no use of clock. 
+ Flip-flops have their output change only either at the rising or filling 
+edge of the enable signal.  Flip-flop is edge sensitive and we need clock to design a flip-flop 
+There are basically five main types of latches and flip-flops: 
+1. SR Flip-flop. 
+2. D Flip flop. 
+3. JK Flip-flop 
+4. T Flip flop. 
+5. Master-Slave Flip-flop.
+The major differences in these flip-flop types are the number of inputs they 
+have and how they change state.
+1)SR Latch:-  RS latch have two inputs, S and R. S is called set and R is called reset. 
+ The S input is used to produce HIGH on Q (i.e. store binary 1 in flip-flop). 
+ The R input is used to produce LOW on Q (i.e. store binary 0 in flip-flop). 
+ Q’ is Q complementary output, so it always holds the opposite value of Q. 
+ The output of the S-R latch depends on current as well as previous inputs 
+or state, and its state (value stored) can change as soon as its inputs 
+change. 
+Working:-
+S=1, R=0—Q=0, Q’=1
+This state is also called the SET state.
+S=0, R=1—Q=1, Q’=0
+This state is known as the RESET state.
+In both the states the outputs are just compliments of each other and 
+that the value of Q follows the compliment value of S.
+S=0, R=0—Q=1, & Q’ =1 [Invalid]
+If both the values of S and R are switched to 0 it is an invalid state 
+because the values of both Q and Q’ are 1. They are supposed to be 
+compliments of each other. Normally, this state must be avoided.
+S=1, R=1—Q & Q’= Remember
+If both the values of S and R are switched to 1, then the circuit 
+remembers the value of S and R in their previous state.
+SR Flip-Flop:-  It is basically S-R latch using NAND gates with an additional enable 
+input. It is also called as level triggered SR-FF. 
+ For this, circuit in output will take place if and only if the enable input 
+(E) is made active.
+ It is also called a Gated S-R flip flop.
+ 
+(Block Diagram) (Circuit Diagram)
+Truth Table
+Working:-
+I. A clock pulse [CP] is given to the inputs of the AND Gate. 
+II. When the value of the clock pulse is ‘0’, the outputs of both the AND Gates 
+remain ‘0’. 
+III. When CP is ‘1’, this makes the values at S and R to pass through the 
+NOR Gate flip flop. 
+IV. But when the values of both S and R values turn ‘1’, the HIGH value of CP 
+causes both of them to turn to ‘0’.
+S = R = 0: No change
+If S =R = 0 then output of NAND gates 3 and 4 are forced to become 1.
+Hence R' and S' both will be equal to 1. Since S' and R' are the input of 
+the basic S-R latch using NAND gates, there will be no change in the state 
+of outputs.
+S = 0, R = 1, E = 1
+Since S = 0, output of NAND-3 i.e. R' = 1 and E = 1 the output of NAND-
+4 i.e. S' = 0.
+Hence Qn+1 = 0 and Qn+1 bar = 1. This is reset condition.
+S = 1, R = 0, E = 1
+Output of NAND-3 i.e. R' = 0 and output of NAND-4 i.e. S' = 1.
+Hence output of S-R NAND latch is Qn+1 = 1 and Qn+1 bar = 0. This is 
+the reset condition.
+S = 1, R = 1, E = 1
+As S = 1, R = 1 and E = 1, the output of NAND gates 3 and 4 both are 0 
+i.e. S' = R' = 0.
+Hence the Race condition will occur in the basic NAND latch.
+Excitation Table of the SR Latch
+ During the design process we usually know the transition from present state 
+to next state and wish to find the latch input conditions that will cause the 
+required transition.
+ For this reason, we need a table that lists the required inputs for a given 
+change of state
+Characteristic Table
+Delay/Data Flip Flop / D Flip Flop
+1. Delay Flip Flop or D Flip Flop is the simple gated S-R latch with a NAND
+inverter connected between S and R inputs.
+2. It has only one input. The input data is appearing at the output after some
+time. Due to this data delay between i/p and o/p, it is called delay flip flop.
+3. S and R will be the complements of each other due to NAND inverter.
+Hence S = R = 0 or S = R = 1, these input condition will never appear.
+This problem is avoid by SR = 00 and SR = 1 conditions.
+(Block Diagram) (Circuit Diagram)
+Truth Table
+Working:-
+1.E = 0
+Latch is disabled. Hence no change in output.
+2.E = 1 and D = 0
+If E = 1 and D = 0 then S = 0 and R = 1. Hence irrespective of the
+present state, the next state is Qn+1 = 0 and Qn+1 bar = 1. This is the
+reset condition.
+3.E = 1 and D = 1
+If E = 1 and D = 1, then S = 1 and R = 0. This will set the latch and
+Qn+1 = 1 and Qn+1 bar = 0 irrespective of the present state.
+JK Flip-Flop:-
+Characteristic Table
+Excitation Table and K Map
+ A J-K flip flop can also be defined as a modification of the S-R flip flop.
+ The behaviour of inputs J and K is same as the S and R inputs of the S￾R flip flop. The letter J stands for SET and the letter K stands for CLEAR.
+ If the J and K input are both at 1 and the clock pulse is applied, then the 
+output will change state, regardless of its previous condition.
+ If both J and K inputs are at 0 and the clock pulse there will be no change 
+in the output. 
+ There is no indeterminate condition, in the operation of JK.
+Working:-  The circuit includes two 3-input AND gates. The output Q of the flip flop is 
+returned back as a feedback to the input of the AND along with other 
+inputs like K and clock pulse [CP]. 
+ So, if the value of CP is ‘1’, the flip flop gets a CLEAR signal and with 
+the condition that the value of Q was earlier 1. 
+ Similarly output Q’ of the flip flop is given as a feedback to the input of the 
+AND along with other inputs like J and clock pulse [CP]. 
+ So the output becomes SET when the value of CP is 1 only if the value of 
+Q’ was earlier 1
+ The output may be repeated in transitions once they have been 
+complimented for J=K=1 because of the feedback connection in the JK flip￾flop
+Truth Table: Excitation Table
+T – Flip Flop:-
+Characteristic Table And K Map:
+ The T flip-flop is a single input version of the JK flip-flop where T is 
+connected to both J and K inputs directly.
+ When T = 0, the flip flop enters into Hold mode, which means that the 
+output, Q is kept the same as it was before the clock edge.  When T = 1, the flip flop enters into Toggle mode, which means the output 
+Q is negated after the clock edge, compared to the value before the clock 
+edge.
+ 
+Truth Table
+ 
+Characteristic Table Excitation Table
+Characteristic equation of T-Flip Flop:
+Qn + 1 = T ⊕ Qn
+Race Around Condition:
+The race around condition will occur in JK flip flop when 
+J = K = 1 and tpd (FF) < tpw.
+To avoid race around condition.
+tpw < tpd (FF) < TCLK
+Master Slave JK Flip Flop:-
+Master slave JK FF is a cascade of two S-R FF with feedback from the output of 
+second to input of first. Master is a positive level triggered. But due to the 
+presence of the inverter in the clock line, the slave will respond to the negative 
+level. Hence when the clock = 1 (positive level) the master is active and the 
+slave is inactive. Whereas when clock = 0 (low level) the slave is active and 
+master is inactive.
+Circuit Diagram:
+Truth Table
+Working:-
+1.J = K = 0 (No change)
+When clock = 0, the slave becomes active and master is inactive. But since 
+the S and R inputs have not changed, the slave outputs will also remain 
+unchanged. Therefore outputs will not change if J = K =0.
+2.J = 0 and K = 1 (Reset)
+1. Clock = 1 − Master active, slave inactive. Therefore outputs of the master 
+become Q1 = 0 and Q1 bar = 1. That means S = 0 and R =1.
+2. Clock = 0 − Slave active, master inactive. Therefore outputs of the slave 
+become Q = 0 and Q bar = 1.
+3. Again clock = 1 − Master active, slave inactive. Therefore even with the 
+changed outputs Q = 0 and Q bar = 1 fed back to master, its output will 
+be Q1 = 0 and Q1 bar = 1. That means S = 0 and R = 1.
+4. Hence with clock = 0 and slave becoming active the outputs of slave will 
+remain Q = 0 and Q bar = 1. Thus we get a stable output from the Master 
+slave.
+3.J = 1 and K = 0 (Set)
+1. Clock = 1 − Master active, slave inactive. Therefore outputs of the master 
+become Q1 = 1 and Q1 bar = 0. That means S = 1 and R =0.
+2. Clock = 0 − Slave active, master inactive. Therefore outputs of the slave 
+become Q = 1 and Q bar = 0.
+3. Again clock = 1 − then it can be shown that the outputs of the slave are 
+stabilized to Q = 1 and Q bar = 0.
+4.J = K = 1 (Toggle)
+1. Clock = 1 − Master active, slave inactive. Outputs of master will toggle. So 
+S and R also will be inverted.
+2. Clock = 0 − Slave active, master inactive. Outputs of slave will toggle.
+3. These changed output are returned back to the master inputs. But since 
+clock = 0, the master is still inactive. So it does not respond to these 
+changed outputs. This avoids the multiple toggling which leads to the race 
+around condition. The master slave flip flop will avoid the race around 
+condition.
+Triggering of Flip Flops:
+ The output of a flip flop can be changed by bring a small change in the input 
+signal.This small change can be brought with the help of a clock pulse or 
+commonly known as a trigger pulse.
+ When such a trigger pulse is applied to the input, the output changes and thus 
+the flip flop is said to be triggered.
+ Flip flops are applicable in designing counters or registers which stores data in 
+the form of multi-bit numbers. 
+ But such registers need a group of flip flops connected to each other as 
+sequential circuits. And these sequential circuits require trigger pulses.
+There are mainly four types of pulse-triggering methods. They differ in the 
+manner in which the electronic circuits respond to the pulse. They are 
+1. High Level Triggering
+When a flip flop is required to respond at its HIGH state, a HIGH level 
+triggering method is used. It is mainly identified from the straight lead from the 
+clock input. 
+2. Low Level Triggering:
+When a flip flop is required to respond at its LOW state, a LOW level 
+triggering method is used. It is mainly identified from the clock input lead along 
+with a low state indicator bubble. 
+3. Positive Edge Triggering
+When a flip flop is required to respond at a LOW to HIGH transition state, 
+POSITIVE edge triggering method is used. It is mainly identified from the clock 
+input lead along with a triangle. 
+4. Negative Edge triggering
+When a flip flop is required to respond during the HIGH to LOW transition 
+state, a NEGATIVE edge triggering method is used. It is mainly identified from the 
+clock input lead along with a low-state indicator and a triangle. 
+Clock Pulse Transition
+The movement of a trigger pulse is always from a 0 to 1 and then 1 to 0 
+of a signal. Thus it takes two transitions in a single signal. When it moves from 0 
+to 1 it is called a positive transition and when it moves from 1 to 0 it is called a 
+negative transition. 
+The clocked flip-flops already introduced are triggered during the 0 to 1 transition 
+of the pulse, and the state transition starts as soon as the pulse reaches the 
+HIGH level. If the other inputs change while the clock is still 1, a new output 
+state may occur. If the flip-flop is made to then the multiple-transition problem can 
+be eliminated.
+The multi-transition problem can be stopped is the flip flop is made to respond to 
+the positive or negative edge transition only, other than responding to the entire 
+pulse duration.
+Flip Flop Conversions:
+Procedure for Flip Flop conversion:
+1. Conversion Table: Construct the characteristic table of required flip flop 
+(unknown), and fill available (known) flip flop excitation.
+2. Solve K map for given (known) flip flop as input and required flip flop as 
+output.
+3. Implement the required flip flop using the known flip flop.
+The flip flop conversions are classified into different types which are:
+1. SR Flip Flop to JK Flip Flop
+2. JK-FF to SR-FF Conversion
+3. SR-FF to D-FF Conversion
+4. D-FF to SR-FF Conversion
+5. JK-FF to T-FF Conversion
+6. JK-FF to D-FF Conversion
+7. D-FF to JK-FF Conversion
+Register and sift Resister:
+Flip-flop is a 1 bit memory cell which can be used for storing the 
+digital data. To increase the storage capacity in terms of number of bits, we 
+have to use a group of flip-flop. Such a group of flip-flop is known as 
+a Register. The n-bit register will consist of n number of flip-flop and it is 
+capable of storing an n-bit word.
+The binary data in a register can be moved within the register from one 
+flip-flop to another. The registers that allow such data transfers are called 
+as shift registers. There are four mode of operations of a register.
+1. Serial Input Serial Output (shift register)
+2. Serial Input Parallel Output
+3. Parallel Input Serial Output
+4. Parallel Input Parallel Output (storage/buffer register)
+Serial Input Serial Output:
+Let all the flip-flop be initially in the reset condition i.e. Q3 = Q2 = Q1 = 
+Q0 = 0. If an entry of a four bit binary number 1 1 1 1 is made into the 
+register, this number should be applied to Din bit with the LSB bit applied 
+first. The D input of FF-3 i.e. D3 is connected to serial data input Din. 
+Output of FF-3 i.e. Q3 is connected to the input of the next flip-flop i.e. 
+D2 and so on.
+Block Diagram
+Operation
+Before application of clock signal, let Q3 Q2 Q1 Q0 = 0000 and apply LSB 
+bit of the number to be entered to Din. So Din = D3 = 1. Apply the clock. 
+On the first falling edge of clock, the FF-3 is set, and stored word in the 
+register is Q3 Q2 Q1Q0 = 1000.
+Apply the next bit to Din. So Din = 1. As soon as the next negative edge of 
+the clock hits, FF-2 will set and the stored word change to Q3 Q2 Q1 Q0 = 
+1100. Apply the next bit to be stored i.e. 1 to Din. Apply the clock pulse. As soon 
+as the third negative clock edge hits, FF-1 will be set and output will be 
+modified to Q3 Q2 Q1 Q0 = 1110.
+Similarly with Din = 1 and with the fourth negative clock edge arriving, the 
+stored word in the register is Q3 Q2 Q1 Q0 = 1111.
+Truth Table
+Waveforms
+Serial Input Parallel Output
+ In such types of operations, the data is entered serially and taken out in 
+parallel fashion.
+ Data is loaded bit by bit. The outputs are disabled as long as the data is 
+loading.
+ As soon as the data loading gets completed, all the flip-flops contain their 
+required data, the outputs are enabled so that all the loaded data is made 
+available over all the output lines at the same time.
+ 4 clock cycles are required to load a four bit word. Hence the speed of 
+operation of SIPO mode is same as that of SISO mode.
+Block Diagram
+Parallel Input Serial Output (PISO)
+ Data bits are entered in parallel fashion.
+ Output of previous Flip Flop is connected to the input of the next one via a 
+combinational circuit.
+ The binary input word B0, B1, B2, B3 is applied though the same 
+combinational circuit.
+ There are two modes in which this circuit can work namely - shift mode or 
+load mode.
+Load mode
+When the shift/load bar line is low (0), the AND gate 2, 4 and 6 become active 
+they will pass B1, B2, B3 bits to the corresponding flip-flops. On the low going 
+edge of clock, the binary input B0, B1, B2, B3 will get loaded into the 
+corresponding flip-flops. Thus parallel loading takes place.
+Shift mode
+When the shift/load bar line is low (1), the AND gate 2, 4 and 6 become inactive. 
+Hence the parallel loading of the data becomes impossible. But the AND gate 1,3 
+and 5 become active. Therefore the shifting of data from left to right bit by bit on 
+application of clock pulses. Thus the parallel in serial out operation takes place.
+Block Diagram
+Parallel Input Parallel Output (PIPO)
+In this mode, the 4 bit binary input B0, B1, B2, B3 is applied to the data inputs 
+D0, D1, D2, D3 respectively of the four flip-flops. As soon as a negative clock 
+edge is applied, the input binary bits will be loaded into the flip-flops 
+simultaneously. The loaded bits will appear simultaneously to the output side. Only 
+clock pulse is essential to load all the bits.
+Block Diagram
+Bidirectional Shift Register
+ If a binary number is shifted left by one position then it is equivalent to 
+multiplying the original number by 2. Similarly if a binary number is shifted 
+right by one position then it is equivalent to dividing the original number by 
+2.
+ Hence if we want to use the shift register to multiply and divide the given 
+binary number, then we should be able to move the data in either left or 
+right direction.
+ Such a register is called bi-directional register. A four bit bi-directional shift 
+register is shown in fig.
+ There are two serial inputs namely the serial right shift data input DR, and 
+the serial left shift data input DL along with a mode select input (M).Syllabus:-
+Flip-flop, Gated Latch, Master-Slave Flip-Flop, Edge-Trigging, T Flip-Flop, 
+JK flip-flop, Register and sift Resister, Counter, Decoders, Multiplexers, 
+Programmable Logic Devices (PLDs), Programmable Array Logic(PAL), 
+Complex Programmable Logic Devices (CPLDs), Field-Programmable Gate 
+Array (FPGA), Sequential Circuits, Timing Diagram, The Finite State 
+Machine Model, Synthesis of Finite State Machine.
+Flip-Flop:-
+1) A flip-flop is a bi-stable device. It has 2 stable states. Its O/P remains 
+either high or low. 
+2) The high stable state is called SET. The other stable state is called 
+RESET. 
+3) It can store binary bit, rather 0 or 1. Thus, it has storing capability, 
+i.e., memory.
+4) The most commonly used application of flip flops is in the 
+implementation of a feedback circuit 
+The main difference between latches and flip-flops is that 
+ For latches when they are enabled, their output changes immediately 
+when their inputs change.
+ Latch is level sensitive and there is no use of clock. 
+ Flip-flops have their output change only either at the rising or filling 
+edge of the enable signal.  Flip-flop is edge sensitive and we need clock to design a flip-flop 
+There are basically five main types of latches and flip-flops: 
+1. SR Flip-flop. 
+2. D Flip flop. 
+3. JK Flip-flop 
+4. T Flip flop. 
+5. Master-Slave Flip-flop.
+The major differences in these flip-flop types are the number of inputs they 
+have and how they change state.
+1)SR Latch:-  RS latch have two inputs, S and R. S is called set and R is called reset. 
+ The S input is used to produce HIGH on Q (i.e. store binary 1 in flip-flop). 
+ The R input is used to produce LOW on Q (i.e. store binary 0 in flip-flop). 
+ Q’ is Q complementary output, so it always holds the opposite value of Q. 
+ The output of the S-R latch depends on current as well as previous inputs 
+or state, and its state (value stored) can change as soon as its inputs 
+change. 
+Working:-
+S=1, R=0—Q=0, Q’=1
+This state is also called the SET state.
+S=0, R=1—Q=1, Q’=0
+This state is known as the RESET state.
+In both the states the outputs are just compliments of each other and 
+that the value of Q follows the compliment value of S.
+S=0, R=0—Q=1, & Q’ =1 [Invalid]
+If both the values of S and R are switched to 0 it is an invalid state 
+because the values of both Q and Q’ are 1. They are supposed to be 
+compliments of each other. Normally, this state must be avoided.
+S=1, R=1—Q & Q’= Remember
+If both the values of S and R are switched to 1, then the circuit 
+remembers the value of S and R in their previous state.
+SR Flip-Flop:-  It is basically S-R latch using NAND gates with an additional enable 
+input. It is also called as level triggered SR-FF. 
+ For this, circuit in output will take place if and only if the enable input 
+(E) is made active.
+ It is also called a Gated S-R flip flop.
+ 
+(Block Diagram) (Circuit Diagram)
+Truth Table
+Working:-
+I. A clock pulse [CP] is given to the inputs of the AND Gate. 
+II. When the value of the clock pulse is ‘0’, the outputs of both the AND Gates 
+remain ‘0’. 
+III. When CP is ‘1’, this makes the values at S and R to pass through the 
+NOR Gate flip flop. 
+IV. But when the values of both S and R values turn ‘1’, the HIGH value of CP 
+causes both of them to turn to ‘0’.
+S = R = 0: No change
+If S =R = 0 then output of NAND gates 3 and 4 are forced to become 1.
+Hence R' and S' both will be equal to 1. Since S' and R' are the input of 
+the basic S-R latch using NAND gates, there will be no change in the state 
+of outputs.
+S = 0, R = 1, E = 1
+Since S = 0, output of NAND-3 i.e. R' = 1 and E = 1 the output of NAND-
+4 i.e. S' = 0.
+Hence Qn+1 = 0 and Qn+1 bar = 1. This is reset condition.
+S = 1, R = 0, E = 1
+Output of NAND-3 i.e. R' = 0 and output of NAND-4 i.e. S' = 1.
+Hence output of S-R NAND latch is Qn+1 = 1 and Qn+1 bar = 0. This is 
+the reset condition.
+S = 1, R = 1, E = 1
+As S = 1, R = 1 and E = 1, the output of NAND gates 3 and 4 both are 0 
+i.e. S' = R' = 0.
+Hence the Race condition will occur in the basic NAND latch.
+Excitation Table of the SR Latch
+ During the design process we usually know the transition from present state 
+to next state and wish to find the latch input conditions that will cause the 
+required transition.
+ For this reason, we need a table that lists the required inputs for a given 
+change of state
+Characteristic Table
+Delay/Data Flip Flop / D Flip Flop
+1. Delay Flip Flop or D Flip Flop is the simple gated S-R latch with a NAND
+inverter connected between S and R inputs.
+2. It has only one input. The input data is appearing at the output after some
+time. Due to this data delay between i/p and o/p, it is called delay flip flop.
+3. S and R will be the complements of each other due to NAND inverter.
+Hence S = R = 0 or S = R = 1, these input condition will never appear.
+This problem is avoid by SR = 00 and SR = 1 conditions.
+(Block Diagram) (Circuit Diagram)
+Truth Table
+Working:-
+1.E = 0
+Latch is disabled. Hence no change in output.
+2.E = 1 and D = 0
+If E = 1 and D = 0 then S = 0 and R = 1. Hence irrespective of the
+present state, the next state is Qn+1 = 0 and Qn+1 bar = 1. This is the
+reset condition.
+3.E = 1 and D = 1
+If E = 1 and D = 1, then S = 1 and R = 0. This will set the latch and
+Qn+1 = 1 and Qn+1 bar = 0 irrespective of the present state.
+JK Flip-Flop:-
+Characteristic Table
+Excitation Table and K Map
+ A J-K flip flop can also be defined as a modification of the S-R flip flop.
+ The behaviour of inputs J and K is same as the S and R inputs of the S￾R flip flop. The letter J stands for SET and the letter K stands for CLEAR.
+ If the J and K input are both at 1 and the clock pulse is applied, then the 
+output will change state, regardless of its previous condition.
+ If both J and K inputs are at 0 and the clock pulse there will be no change 
+in the output. 
+ There is no indeterminate condition, in the operation of JK.
+Working:-  The circuit includes two 3-input AND gates. The output Q of the flip flop is 
+returned back as a feedback to the input of the AND along with other 
+inputs like K and clock pulse [CP]. 
+ So, if the value of CP is ‘1’, the flip flop gets a CLEAR signal and with 
+the condition that the value of Q was earlier 1. 
+ Similarly output Q’ of the flip flop is given as a feedback to the input of the 
+AND along with other inputs like J and clock pulse [CP]. 
+ So the output becomes SET when the value of CP is 1 only if the value of 
+Q’ was earlier 1
+ The output may be repeated in transitions once they have been 
+complimented for J=K=1 because of the feedback connection in the JK flip￾flop
+Truth Table: Excitation Table
+T – Flip Flop:-
+Characteristic Table And K Map:
+ The T flip-flop is a single input version of the JK flip-flop where T is 
+connected to both J and K inputs directly.
+ When T = 0, the flip flop enters into Hold mode, which means that the 
+output, Q is kept the same as it was before the clock edge.  When T = 1, the flip flop enters into Toggle mode, which means the output 
+Q is negated after the clock edge, compared to the value before the clock 
+edge.
+ 
+Truth Table
+ 
+Characteristic Table Excitation Table
+Characteristic equation of T-Flip Flop:
+Qn + 1 = T ⊕ Qn
+Race Around Condition:
+The race around condition will occur in JK flip flop when 
+J = K = 1 and tpd (FF) < tpw.
+To avoid race around condition.
+tpw < tpd (FF) < TCLK
+Master Slave JK Flip Flop:-
+Master slave JK FF is a cascade of two S-R FF with feedback from the output of 
+second to input of first. Master is a positive level triggered. But due to the 
+presence of the inverter in the clock line, the slave will respond to the negative 
+level. Hence when the clock = 1 (positive level) the master is active and the 
+slave is inactive. Whereas when clock = 0 (low level) the slave is active and 
+master is inactive.
+Circuit Diagram:
+Truth Table
+Working:-
+1.J = K = 0 (No change)
+When clock = 0, the slave becomes active and master is inactive. But since 
+the S and R inputs have not changed, the slave outputs will also remain 
+unchanged. Therefore outputs will not change if J = K =0.
+2.J = 0 and K = 1 (Reset)
+1. Clock = 1 − Master active, slave inactive. Therefore outputs of the master 
+become Q1 = 0 and Q1 bar = 1. That means S = 0 and R =1.
+2. Clock = 0 − Slave active, master inactive. Therefore outputs of the slave 
+become Q = 0 and Q bar = 1.
+3. Again clock = 1 − Master active, slave inactive. Therefore even with the 
+changed outputs Q = 0 and Q bar = 1 fed back to master, its output will 
+be Q1 = 0 and Q1 bar = 1. That means S = 0 and R = 1.
+4. Hence with clock = 0 and slave becoming active the outputs of slave will 
+remain Q = 0 and Q bar = 1. Thus we get a stable output from the Master 
+slave.
+3.J = 1 and K = 0 (Set)
+1. Clock = 1 − Master active, slave inactive. Therefore outputs of the master 
+become Q1 = 1 and Q1 bar = 0. That means S = 1 and R =0.
+2. Clock = 0 − Slave active, master inactive. Therefore outputs of the slave 
+become Q = 1 and Q bar = 0.
+3. Again clock = 1 − then it can be shown that the outputs of the slave are 
+stabilized to Q = 1 and Q bar = 0.
+4.J = K = 1 (Toggle)
+1. Clock = 1 − Master active, slave inactive. Outputs of master will toggle. So 
+S and R also will be inverted.
+2. Clock = 0 − Slave active, master inactive. Outputs of slave will toggle.
+3. These changed output are returned back to the master inputs. But since 
+clock = 0, the master is still inactive. So it does not respond to these 
+changed outputs. This avoids the multiple toggling which leads to the race 
+around condition. The master slave flip flop will avoid the race around 
+condition.
+Triggering of Flip Flops:
+ The output of a flip flop can be changed by bring a small change in the input 
+signal.This small change can be brought with the help of a clock pulse or 
+commonly known as a trigger pulse.
+ When such a trigger pulse is applied to the input, the output changes and thus 
+the flip flop is said to be triggered.
+ Flip flops are applicable in designing counters or registers which stores data in 
+the form of multi-bit numbers. 
+ But such registers need a group of flip flops connected to each other as 
+sequential circuits. And these sequential circuits require trigger pulses.
+There are mainly four types of pulse-triggering methods. They differ in the 
+manner in which the electronic circuits respond to the pulse. They are 
+1. High Level Triggering
+When a flip flop is required to respond at its HIGH state, a HIGH level 
+triggering method is used. It is mainly identified from the straight lead from the 
+clock input. 
+2. Low Level Triggering:
+When a flip flop is required to respond at its LOW state, a LOW level 
+triggering method is used. It is mainly identified from the clock input lead along 
+with a low state indicator bubble. 
+3. Positive Edge Triggering
+When a flip flop is required to respond at a LOW to HIGH transition state, 
+POSITIVE edge triggering method is used. It is mainly identified from the clock 
+input lead along with a triangle. 
+4. Negative Edge triggering
+When a flip flop is required to respond during the HIGH to LOW transition 
+state, a NEGATIVE edge triggering method is used. It is mainly identified from the 
+clock input lead along with a low-state indicator and a triangle. 
+Clock Pulse Transition
+The movement of a trigger pulse is always from a 0 to 1 and then 1 to 0 
+of a signal. Thus it takes two transitions in a single signal. When it moves from 0 
+to 1 it is called a positive transition and when it moves from 1 to 0 it is called a 
+negative transition. 
+The clocked flip-flops already introduced are triggered during the 0 to 1 transition 
+of the pulse, and the state transition starts as soon as the pulse reaches the 
+HIGH level. If the other inputs change while the clock is still 1, a new output 
+state may occur. If the flip-flop is made to then the multiple-transition problem can 
+be eliminated.
+The multi-transition problem can be stopped is the flip flop is made to respond to 
+the positive or negative edge transition only, other than responding to the entire 
+pulse duration.
+Flip Flop Conversions:
+Procedure for Flip Flop conversion:
+1. Conversion Table: Construct the characteristic table of required flip flop 
+(unknown), and fill available (known) flip flop excitation.
+2. Solve K map for given (known) flip flop as input and required flip flop as 
+output.
+3. Implement the required flip flop using the known flip flop.
+The flip flop conversions are classified into different types which are:
+1. SR Flip Flop to JK Flip Flop
+2. JK-FF to SR-FF Conversion
+3. SR-FF to D-FF Conversion
+4. D-FF to SR-FF Conversion
+5. JK-FF to T-FF Conversion
+6. JK-FF to D-FF Conversion
+7. D-FF to JK-FF Conversion
+Register and sift Resister:
+Flip-flop is a 1 bit memory cell which can be used for storing the 
+digital data. To increase the storage capacity in terms of number of bits, we 
+have to use a group of flip-flop. Such a group of flip-flop is known as 
+a Register. The n-bit register will consist of n number of flip-flop and it is 
+capable of storing an n-bit word.
+The binary data in a register can be moved within the register from one 
+flip-flop to another. The registers that allow such data transfers are called 
+as shift registers. There are four mode of operations of a register.
+1. Serial Input Serial Output (shift register)
+2. Serial Input Parallel Output
+3. Parallel Input Serial Output
+4. Parallel Input Parallel Output (storage/buffer register)
+Serial Input Serial Output:
+Let all the flip-flop be initially in the reset condition i.e. Q3 = Q2 = Q1 = 
+Q0 = 0. If an entry of a four bit binary number 1 1 1 1 is made into the 
+register, this number should be applied to Din bit with the LSB bit applied 
+first. The D input of FF-3 i.e. D3 is connected to serial data input Din. 
+Output of FF-3 i.e. Q3 is connected to the input of the next flip-flop i.e. 
+D2 and so on.
+Block Diagram
+Operation
+Before application of clock signal, let Q3 Q2 Q1 Q0 = 0000 and apply LSB 
+bit of the number to be entered to Din. So Din = D3 = 1. Apply the clock. 
+On the first falling edge of clock, the FF-3 is set, and stored word in the 
+register is Q3 Q2 Q1Q0 = 1000.
+Apply the next bit to Din. So Din = 1. As soon as the next negative edge of 
+the clock hits, FF-2 will set and the stored word change to Q3 Q2 Q1 Q0 = 
+1100. Apply the next bit to be stored i.e. 1 to Din. Apply the clock pulse. As soon 
+as the third negative clock edge hits, FF-1 will be set and output will be 
+modified to Q3 Q2 Q1 Q0 = 1110.
+Similarly with Din = 1 and with the fourth negative clock edge arriving, the 
+stored word in the register is Q3 Q2 Q1 Q0 = 1111.
+Truth Table
+Waveforms
+Serial Input Parallel Output
+ In such types of operations, the data is entered serially and taken out in 
+parallel fashion.
+ Data is loaded bit by bit. The outputs are disabled as long as the data is 
+loading.
+ As soon as the data loading gets completed, all the flip-flops contain their 
+required data, the outputs are enabled so that all the loaded data is made 
+available over all the output lines at the same time.
+ 4 clock cycles are required to load a four bit word. Hence the speed of 
+operation of SIPO mode is same as that of SISO mode.
+Block Diagram
+Parallel Input Serial Output (PISO)
+ Data bits are entered in parallel fashion.
+ Output of previous Flip Flop is connected to the input of the next one via a 
+combinational circuit.
+ The binary input word B0, B1, B2, B3 is applied though the same 
+combinational circuit.
+ There are two modes in which this circuit can work namely - shift mode or 
+load mode.
+Load mode
+When the shift/load bar line is low (0), the AND gate 2, 4 and 6 become active 
+they will pass B1, B2, B3 bits to the corresponding flip-flops. On the low going 
+edge of clock, the binary input B0, B1, B2, B3 will get loaded into the 
+corresponding flip-flops. Thus parallel loading takes place.
+Shift mode
+When the shift/load bar line is low (1), the AND gate 2, 4 and 6 become inactive. 
+Hence the parallel loading of the data becomes impossible. But the AND gate 1,3 
+and 5 become active. Therefore the shifting of data from left to right bit by bit on 
+application of clock pulses. Thus the parallel in serial out operation takes place.
+Block Diagram
+Parallel Input Parallel Output (PIPO)
+In this mode, the 4 bit binary input B0, B1, B2, B3 is applied to the data inputs 
+D0, D1, D2, D3 respectively of the four flip-flops. As soon as a negative clock 
+edge is applied, the input binary bits will be loaded into the flip-flops 
+simultaneously. The loaded bits will appear simultaneously to the output side. Only 
+clock pulse is essential to load all the bits.
+Block Diagram
+Bidirectional Shift Register
+ If a binary number is shifted left by one position then it is equivalent to 
+multiplying the original number by 2. Similarly if a binary number is shifted 
+right by one position then it is equivalent to dividing the original number by 
+2.
+ Hence if we want to use the shift register to multiply and divide the given 
+binary number, then we should be able to move the data in either left or 
+right direction.
+ Such a register is called bi-directional register. A four bit bi-directional shift 
+register is shown in fig.
+ There are two serial inputs namely the serial right shift data input DR, and 
+the serial left shift data input DL along with a mode select input (M).Syllabus:-
+Flip-flop, Gated Latch, Master-Slave Flip-Flop, Edge-Trigging, T Flip-Flop, 
+JK flip-flop, Register and sift Resister, Counter, Decoders, Multiplexers, 
+Programmable Logic Devices (PLDs), Programmable Array Logic(PAL), 
+Complex Programmable Logic Devices (CPLDs), Field-Programmable Gate 
+Array (FPGA), Sequential Circuits, Timing Diagram, The Finite State 
+Machine Model, Synthesis of Finite State Machine.
+Flip-Flop:-
+1) A flip-flop is a bi-stable device. It has 2 stable states. Its O/P remains 
+either high or low. 
+2) The high stable state is called SET. The other stable state is called 
+RESET. 
+3) It can store binary bit, rather 0 or 1. Thus, it has storing capability, 
+i.e., memory.
+4) The most commonly used application of flip flops is in the 
+implementation of a feedback circuit 
+The main difference between latches and flip-flops is that 
+ For latches when they are enabled, their output changes immediately 
+when their inputs change.
+ Latch is level sensitive and there is no use of clock. 
+ Flip-flops have their output change only either at the rising or filling 
+edge of the enable signal.  Flip-flop is edge sensitive and we need clock to design a flip-flop 
+There are basically five main types of latches and flip-flops: 
+1. SR Flip-flop. 
+2. D Flip flop. 
+3. JK Flip-flop 
+4. T Flip flop. 
+5. Master-Slave Flip-flop.
+The major differences in these flip-flop types are the number of inputs they 
+have and how they change state.
+1)SR Latch:-  RS latch have two inputs, S and R. S is called set and R is called reset. 
+ The S input is used to produce HIGH on Q (i.e. store binary 1 in flip-flop). 
+ The R input is used to produce LOW on Q (i.e. store binary 0 in flip-flop). 
+ Q’ is Q complementary output, so it always holds the opposite value of Q. 
+ The output of the S-R latch depends on current as well as previous inputs 
+or state, and its state (value stored) can change as soon as its inputs 
+change. 
+Working:-
+S=1, R=0—Q=0, Q’=1
+This state is also called the SET state.
+S=0, R=1—Q=1, Q’=0
+This state is known as the RESET state.
+In both the states the outputs are just compliments of each other and 
+that the value of Q follows the compliment value of S.
+S=0, R=0—Q=1, & Q’ =1 [Invalid]
+If both the values of S and R are switched to 0 it is an invalid state 
+because the values of both Q and Q’ are 1. They are supposed to be 
+compliments of each other. Normally, this state must be avoided.
+S=1, R=1—Q & Q’= Remember
+If both the values of S and R are switched to 1, then the circuit 
+remembers the value of S and R in their previous state.
+SR Flip-Flop:-  It is basically S-R latch using NAND gates with an additional enable 
+input. It is also called as level triggered SR-FF. 
+ For this, circuit in output will take place if and only if the enable input 
+(E) is made active.
+ It is also called a Gated S-R flip flop.
+ 
+(Block Diagram) (Circuit Diagram)
+Truth Table
+Working:-
+I. A clock pulse [CP] is given to the inputs of the AND Gate. 
+II. When the value of the clock pulse is ‘0’, the outputs of both the AND Gates 
+remain ‘0’. 
+III. When CP is ‘1’, this makes the values at S and R to pass through the 
+NOR Gate flip flop. 
+IV. But when the values of both S and R values turn ‘1’, the HIGH value of CP 
+causes both of them to turn to ‘0’.
+S = R = 0: No change
+If S =R = 0 then output of NAND gates 3 and 4 are forced to become 1.
+Hence R' and S' both will be equal to 1. Since S' and R' are the input of 
+the basic S-R latch using NAND gates, there will be no change in the state 
+of outputs.
+S = 0, R = 1, E = 1
+Since S = 0, output of NAND-3 i.e. R' = 1 and E = 1 the output of NAND-
+4 i.e. S' = 0.
+Hence Qn+1 = 0 and Qn+1 bar = 1. This is reset condition.
+S = 1, R = 0, E = 1
+Output of NAND-3 i.e. R' = 0 and output of NAND-4 i.e. S' = 1.
+Hence output of S-R NAND latch is Qn+1 = 1 and Qn+1 bar = 0. This is 
+the reset condition.
+S = 1, R = 1, E = 1
+As S = 1, R = 1 and E = 1, the output of NAND gates 3 and 4 both are 0 
+i.e. S' = R' = 0.
+Hence the Race condition will occur in the basic NAND latch.
+Excitation Table of the SR Latch
+ During the design process we usually know the transition from present state 
+to next state and wish to find the latch input conditions that will cause the 
+required transition.
+ For this reason, we need a table that lists the required inputs for a given 
+change of state
+Characteristic Table
+Delay/Data Flip Flop / D Flip Flop
+1. Delay Flip Flop or D Flip Flop is the simple gated S-R latch with a NAND
+inverter connected between S and R inputs.
+2. It has only one input. The input data is appearing at the output after some
+time. Due to this data delay between i/p and o/p, it is called delay flip flop.
+3. S and R will be the complements of each other due to NAND inverter.
+Hence S = R = 0 or S = R = 1, these input condition will never appear.
+This problem is avoid by SR = 00 and SR = 1 conditions.
+(Block Diagram) (Circuit Diagram)
+Truth Table
+Working:-
+1.E = 0
+Latch is disabled. Hence no change in output.
+2.E = 1 and D = 0
+If E = 1 and D = 0 then S = 0 and R = 1. Hence irrespective of the
+present state, the next state is Qn+1 = 0 and Qn+1 bar = 1. This is the
+reset condition.
+3.E = 1 and D = 1
+If E = 1 and D = 1, then S = 1 and R = 0. This will set the latch and
+Qn+1 = 1 and Qn+1 bar = 0 irrespective of the present state.
+JK Flip-Flop:-
+Characteristic Table
+Excitation Table and K Map
+ A J-K flip flop can also be defined as a modification of the S-R flip flop.
+ The behaviour of inputs J and K is same as the S and R inputs of the S￾R flip flop. The letter J stands for SET and the letter K stands for CLEAR.
+ If the J and K input are both at 1 and the clock pulse is applied, then the 
+output will change state, regardless of its previous condition.
+ If both J and K inputs are at 0 and the clock pulse there will be no change 
+in the output. 
+ There is no indeterminate condition, in the operation of JK.
+Working:-  The circuit includes two 3-input AND gates. The output Q of the flip flop is 
+returned back as a feedback to the input of the AND along with other 
+inputs like K and clock pulse [CP]. 
+ So, if the value of CP is ‘1’, the flip flop gets a CLEAR signal and with 
+the condition that the value of Q was earlier 1. 
+ Similarly output Q’ of the flip flop is given as a feedback to the input of the 
+AND along with other inputs like J and clock pulse [CP]. 
+ So the output becomes SET when the value of CP is 1 only if the value of 
+Q’ was earlier 1
+ The output may be repeated in transitions once they have been 
+complimented for J=K=1 because of the feedback connection in the JK flip￾flop
+Truth Table: Excitation Table
+T – Flip Flop:-
+Characteristic Table And K Map:
+ The T flip-flop is a single input version of the JK flip-flop where T is 
+connected to both J and K inputs directly.
+ When T = 0, the flip flop enters into Hold mode, which means that the 
+output, Q is kept the same as it was before the clock edge.  When T = 1, the flip flop enters into Toggle mode, which means the output 
+Q is negated after the clock edge, compared to the value before the clock 
+edge.
+ 
+Truth Table
+ 
+Characteristic Table Excitation Table
+Characteristic equation of T-Flip Flop:
+Qn + 1 = T ⊕ Qn
+Race Around Condition:
+The race around condition will occur in JK flip flop when 
+J = K = 1 and tpd (FF) < tpw.
+To avoid race around condition.
+tpw < tpd (FF) < TCLK
+Master Slave JK Flip Flop:-
+Master slave JK FF is a cascade of two S-R FF with feedback from the output of 
+second to input of first. Master is a positive level triggered. But due to the 
+presence of the inverter in the clock line, the slave will respond to the negative 
+level. Hence when the clock = 1 (positive level) the master is active and the 
+slave is inactive. Whereas when clock = 0 (low level) the slave is active and 
+master is inactive.
+Circuit Diagram:
+Truth Table
+Working:-
+1.J = K = 0 (No change)
+When clock = 0, the slave becomes active and master is inactive. But since 
+the S and R inputs have not changed, the slave outputs will also remain 
+unchanged. Therefore outputs will not change if J = K =0.
+2.J = 0 and K = 1 (Reset)
+1. Clock = 1 − Master active, slave inactive. Therefore outputs of the master 
+become Q1 = 0 and Q1 bar = 1. That means S = 0 and R =1.
+2. Clock = 0 − Slave active, master inactive. Therefore outputs of the slave 
+become Q = 0 and Q bar = 1.
+3. Again clock = 1 − Master active, slave inactive. Therefore even with the 
+changed outputs Q = 0 and Q bar = 1 fed back to master, its output will 
+be Q1 = 0 and Q1 bar = 1. That means S = 0 and R = 1.
+4. Hence with clock = 0 and slave becoming active the outputs of slave will 
+remain Q = 0 and Q bar = 1. Thus we get a stable output from the Master 
+slave.
+3.J = 1 and K = 0 (Set)
+1. Clock = 1 − Master active, slave inactive. Therefore outputs of the master 
+become Q1 = 1 and Q1 bar = 0. That means S = 1 and R =0.
+2. Clock = 0 − Slave active, master inactive. Therefore outputs of the slave 
+become Q = 1 and Q bar = 0.
+3. Again clock = 1 − then it can be shown that the outputs of the slave are 
+stabilized to Q = 1 and Q bar = 0.
+4.J = K = 1 (Toggle)
+1. Clock = 1 − Master active, slave inactive. Outputs of master will toggle. So 
+S and R also will be inverted.
+2. Clock = 0 − Slave active, master inactive. Outputs of slave will toggle.
+3. These changed output are returned back to the master inputs. But since 
+clock = 0, the master is still inactive. So it does not respond to these 
+changed outputs. This avoids the multiple toggling which leads to the race 
+around condition. The master slave flip flop will avoid the race around 
+condition.
+Triggering of Flip Flops:
+ The output of a flip flop can be changed by bring a small change in the input 
+signal.This small change can be brought with the help of a clock pulse or 
+commonly known as a trigger pulse.
+ When such a trigger pulse is applied to the input, the output changes and thus 
+the flip flop is said to be triggered.
+ Flip flops are applicable in designing counters or registers which stores data in 
+the form of multi-bit numbers. 
+ But such registers need a group of flip flops connected to each other as 
+sequential circuits. And these sequential circuits require trigger pulses.
+There are mainly four types of pulse-triggering methods. They differ in the 
+manner in which the electronic circuits respond to the pulse. They are 
+1. High Level Triggering
+When a flip flop is required to respond at its HIGH state, a HIGH level 
+triggering method is used. It is mainly identified from the straight lead from the 
+clock input. 
+2. Low Level Triggering:
+When a flip flop is required to respond at its LOW state, a LOW level 
+triggering method is used. It is mainly identified from the clock input lead along 
+with a low state indicator bubble. 
+3. Positive Edge Triggering
+When a flip flop is required to respond at a LOW to HIGH transition state, 
+POSITIVE edge triggering method is used. It is mainly identified from the clock 
+input lead along with a triangle. 
+4. Negative Edge triggering
+When a flip flop is required to respond during the HIGH to LOW transition 
+state, a NEGATIVE edge triggering method is used. It is mainly identified from the 
+clock input lead along with a low-state indicator and a triangle. 
+Clock Pulse Transition
+The movement of a trigger pulse is always from a 0 to 1 and then 1 to 0 
+of a signal. Thus it takes two transitions in a single signal. When it moves from 0 
+to 1 it is called a positive transition and when it moves from 1 to 0 it is called a 
+negative transition. 
+The clocked flip-flops already introduced are triggered during the 0 to 1 transition 
+of the pulse, and the state transition starts as soon as the pulse reaches the 
+HIGH level. If the other inputs change while the clock is still 1, a new output 
+state may occur. If the flip-flop is made to then the multiple-transition problem can 
+be eliminated.
+The multi-transition problem can be stopped is the flip flop is made to respond to 
+the positive or negative edge transition only, other than responding to the entire 
+pulse duration.
+Flip Flop Conversions:
+Procedure for Flip Flop conversion:
+1. Conversion Table: Construct the characteristic table of required flip flop 
+(unknown), and fill available (known) flip flop excitation.
+2. Solve K map for given (known) flip flop as input and required flip flop as 
+output.
+3. Implement the required flip flop using the known flip flop.
+The flip flop conversions are classified into different types which are:
+1. SR Flip Flop to JK Flip Flop
+2. JK-FF to SR-FF Conversion
+3. SR-FF to D-FF Conversion
+4. D-FF to SR-FF Conversion
+5. JK-FF to T-FF Conversion
+6. JK-FF to D-FF Conversion
+7. D-FF to JK-FF Conversion
+Register and sift Resister:
+Flip-flop is a 1 bit memory cell which can be used for storing the 
+digital data. To increase the storage capacity in terms of number of bits, we 
+have to use a group of flip-flop. Such a group of flip-flop is known as 
+a Register. The n-bit register will consist of n number of flip-flop and it is 
+capable of storing an n-bit word.
+The binary data in a register can be moved within the register from one 
+flip-flop to another. The registers that allow such data transfers are called 
+as shift registers. There are four mode of operations of a register.
+1. Serial Input Serial Output (shift register)
+2. Serial Input Parallel Output
+3. Parallel Input Serial Output
+4. Parallel Input Parallel Output (storage/buffer register)
+Serial Input Serial Output:
+Let all the flip-flop be initially in the reset condition i.e. Q3 = Q2 = Q1 = 
+Q0 = 0. If an entry of a four bit binary number 1 1 1 1 is made into the 
+register, this number should be applied to Din bit with the LSB bit applied 
+first. The D input of FF-3 i.e. D3 is connected to serial data input Din. 
+Output of FF-3 i.e. Q3 is connected to the input of the next flip-flop i.e. 
+D2 and so on.
+Block Diagram
+Operation
+Before application of clock signal, let Q3 Q2 Q1 Q0 = 0000 and apply LSB 
+bit of the number to be entered to Din. So Din = D3 = 1. Apply the clock. 
+On the first falling edge of clock, the FF-3 is set, and stored word in the 
+register is Q3 Q2 Q1Q0 = 1000.
+Apply the next bit to Din. So Din = 1. As soon as the next negative edge of 
+the clock hits, FF-2 will set and the stored word change to Q3 Q2 Q1 Q0 = 
+1100. Apply the next bit to be stored i.e. 1 to Din. Apply the clock pulse. As soon 
+as the third negative clock edge hits, FF-1 will be set and output will be 
+modified to Q3 Q2 Q1 Q0 = 1110.
+Similarly with Din = 1 and with the fourth negative clock edge arriving, the 
+stored word in the register is Q3 Q2 Q1 Q0 = 1111.
+Truth Table
+Waveforms
+Serial Input Parallel Output
+ In such types of operations, the data is entered serially and taken out in 
+parallel fashion.
+ Data is loaded bit by bit. The outputs are disabled as long as the data is 
+loading.
+ As soon as the data loading gets completed, all the flip-flops contain their 
+required data, the outputs are enabled so that all the loaded data is made 
+available over all the output lines at the same time.
+ 4 clock cycles are required to load a four bit word. Hence the speed of 
+operation of SIPO mode is same as that of SISO mode.
+Block Diagram
+Parallel Input Serial Output (PISO)
+ Data bits are entered in parallel fashion.
+ Output of previous Flip Flop is connected to the input of the next one via a 
+combinational circuit.
+ The binary input word B0, B1, B2, B3 is applied though the same 
+combinational circuit.
+ There are two modes in which this circuit can work namely - shift mode or 
+load mode.
+Load mode
+When the shift/load bar line is low (0), the AND gate 2, 4 and 6 become active 
+they will pass B1, B2, B3 bits to the corresponding flip-flops. On the low going 
+edge of clock, the binary input B0, B1, B2, B3 will get loaded into the 
+corresponding flip-flops. Thus parallel loading takes place.
+Shift mode
+When the shift/load bar line is low (1), the AND gate 2, 4 and 6 become inactive. 
+Hence the parallel loading of the data becomes impossible. But the AND gate 1,3 
+and 5 become active. Therefore the shifting of data from left to right bit by bit on 
+application of clock pulses. Thus the parallel in serial out operation takes place.
+Block Diagram
+Parallel Input Parallel Output (PIPO)
+In this mode, the 4 bit binary input B0, B1, B2, B3 is applied to the data inputs 
+D0, D1, D2, D3 respectively of the four flip-flops. As soon as a negative clock 
+edge is applied, the input binary bits will be loaded into the flip-flops 
+simultaneously. The loaded bits will appear simultaneously to the output side. Only 
+clock pulse is essential to load all the bits.
+Block Diagram
+Bidirectional Shift Register
+ If a binary number is shifted left by one position then it is equivalent to 
+multiplying the original number by 2. Similarly if a binary number is shifted 
+right by one position then it is equivalent to dividing the original number by 
+2.
+ Hence if we want to use the shift register to multiply and divide the given 
+binary number, then we should be able to move the data in either left or 
+right direction.
+ Such a register is called bi-directional register. A four bit bi-directional shift 
+register is shown in fig.
+ There are two serial inputs namely the serial right shift data input DR, and 
+the serial left shift data input DL along with a mode select input (M).
+
+</details>
+</fieldset>
+</body>
+</html>
